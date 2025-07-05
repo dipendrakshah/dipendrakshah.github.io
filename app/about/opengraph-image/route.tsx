@@ -8,7 +8,7 @@ import commaNumber from "comma-number";
 
 // Image
 const rauchgPhoto = toArrayBuffer(
-  readFileSync(join(process.cwd(), "public/images/rauchg-3d4cecf.gray.jpg"))
+  readFileSync(join(process.cwd(), "public/images/self_bw.PNG"))
 );
 
 // Fonts
@@ -42,7 +42,7 @@ export async function GET() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 tw="rounded-full h-74"
-                alt="Guillermo Rauch"
+                alt="Dipendra K. Shah"
                 // @ts-ignore
                 src={rauchgPhoto}
               />
