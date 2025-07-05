@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# blog
 
-## Getting Started
+This is the blog that powers `rauchg.com`, built on
+[next.js](https://nextjs.org/) and
+deployed to the cloud via [Vercel](https://vercel.com).
 
-First, run the development server:
+## How to run
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+First, install [Vercel CLI](https://vercel.com/download).
+
+### Development
+
+```
+vc dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Staging
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+vc
+```
 
-## Learn More
+This is the equivalent of submitting a PR with the [GitHub integration](https://vercel.com/github)
 
-To learn more about Next.js, take a look at the following resources:
+#### Production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+vc --prod
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This is the equivalent of `git push` to `master` (or merging a PR to master)
 
-## Deploy on Vercel
+## Architecture
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Pure components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Every stateless pure component is found under `./components`.
+
+Every component that has to do with styling the post's markup
+is found under `./components/post/`
+
+These components make up the _style guide_ of the application.
+
+### Blog posts
+
+Every blog post is a static page hosted under `pages/$year/`.
+
+This allows every post to load arbitrary modules, have custom layouts
+and take advantage of automatic code splitting and lazy loading.
+
+This means that the bloat of a single post doesn't "rub off on" the
+rest of the site.
+
+An index of all posts is maintained in JSON format as `./posts.json`
+for practical reasons.
