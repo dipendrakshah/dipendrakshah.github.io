@@ -14,7 +14,7 @@ export async function GET() {
     <id>https://dipendrakshah.com.np/</id>
     <author>
       <name>Dipendra K. Shah</name>
-      <email>rauchg@gmail.com</email>
+      <email>dipendrakmrshah@gmail.com</email>
     </author>
     ${posts.slice(0, max).reduce((acc, post) => {
       const dateMatch = post.date.match(/\d{4}/);

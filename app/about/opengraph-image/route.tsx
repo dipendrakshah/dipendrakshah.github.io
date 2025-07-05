@@ -7,7 +7,7 @@ import { join } from "path";
 import commaNumber from "comma-number";
 
 // Image
-const rauchgPhoto = toArrayBuffer(
+const dipendrakPhoto = toArrayBuffer(
   readFileSync(join(process.cwd(), "public/images/self_bw.PNG"))
 );
 
@@ -44,13 +44,13 @@ export async function GET() {
                 tw="rounded-full h-74"
                 alt="Dipendra K. Shah"
                 // @ts-ignore
-                src={rauchgPhoto}
+                src={dipendrakPhoto}
               />
             </div>
 
             <div tw="flex flex-col px-10 grow text-[28px] h-70 justify-center">
               <div tw="text-[64px] mb-7" style={font("Inter 500")}>
-                Guillermo Rauch
+                Dipendra K. Shah
               </div>
               <div tw="flex mb-5" style={font("Roboto Mono 400")}>
                 <span tw="text-gray-400 mr-3">&mdash;</span> CEO and Founder of
