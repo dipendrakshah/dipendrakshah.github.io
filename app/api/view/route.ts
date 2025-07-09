@@ -35,12 +35,6 @@ export async function GET(req: NextRequest) {
   }
 
   if (url.searchParams.get("incr") != null) {
-    if (!redis) {
-      return NextResponse.json(
-        { error: { message: "Redis is not configured", code: "NO_REDIS" } },
-        { status: 500 }
-      );
-    }
     const views = await redis.hincrby("views", id, 1);
     return NextResponse.json({
       ...post,
@@ -48,12 +42,6 @@ export async function GET(req: NextRequest) {
       viewsFormatted: commaNumber(views),
     });
   } else {
-    if (!redis) {
-      return NextResponse.json(
-        { error: { message: "Redis is not configured", code: "NO_REDIS" } },
-        { status: 500 }
-      );
-    }
     const views = (await redis.hget("views", id)) ?? 0;
     return NextResponse.json({
       ...post,
